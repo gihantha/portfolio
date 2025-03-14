@@ -1,12 +1,69 @@
-# React + Vite
+# Kaveen.web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Kaveen.web is a personal portfolio built using **React**, **Tailwind CSS**, **JavaScript**, and **HTML**. It is a single-page web application designed to showcase your projects and personal information.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Home**: Welcome message
+- **About**: Information about me
+- **Projects**: Showcase of my work
+- **Contact**: Get in touch with me
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Installation
+
+Follow these steps to set up the project locally:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone "https://github.com/gihantha/portfolio"
+
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd portfolio
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env` file and configure your environment variables (database credentials, Stripe keys, etc.).
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Access the application in your browser at `http://localhost:5173/`.
+
+## Screenshots
+
+### General
+
+**Login Page:**
+![Loading](/home/kaveen/Pictures/Screenshots/Loading.png)
+
+**Full Page:**
+![Single Page Web App](/home/kaveen/Pictures/Screenshots/FullPage.png)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contributions
+
+Contributions are welcome! Feel free to submit a pull request or open an issue for suggestions and improvements.
+
+## Contact
+
+For further inquiries or support, please contact gihantha01@gmail.com.
