@@ -84,7 +84,7 @@ export const Projects = () => {
                 users to perform daily.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {["Flutter", "Dart", "C++", "CMake"].map((tech, key) => (
+                {["Flutter", "Dart"].map((tech, key) => (
                   <span
                     key={key}
                     className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 
@@ -268,7 +268,7 @@ export const Projects = () => {
             <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
               <h3 className="text-xl font-bold mb-2"> Movie App</h3>
               <p className="text-gray-400 mb-4">
-                Movie rating web application using Reac Js, Filtering movie
+                Movie rating web application using React Js, Filtering movie
                 details from external API
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
@@ -284,7 +284,7 @@ export const Projects = () => {
               </div>
               <div className="flex justify-between items-center">
                 <a
-                  href="https://github.com/gihantha/E-Commerce"
+                  href="https://github.com/gihantha/Movie-App"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4 flex items-center"

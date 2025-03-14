@@ -2,7 +2,7 @@ import { RevealOnScroll } from "../RevealOnScroll";
 
 export const About = () => {
   const skills = {
-    "Programming Languages": ["JavaScript", "PHP", "SQL"],
+    "Programming Languages": ["JavaScript", "PHP", "SQL", "Dart"],
     "Frameworks / Libraries": [
       "React JS",
       "Node JS",
@@ -12,6 +12,7 @@ export const About = () => {
       "Material UI",
       "Tailwind",
       "CodeIgniter",
+      "Flutter"
     ],
     "Web Technologies": ["HTML", "CSS", "SASS", "REST"],
     "Database Management Systems": ["MySQL", "MongoDB", "Firebase"],
@@ -68,7 +69,7 @@ export const About = () => {
                     {" "}
                     B.S. Honours in Computing and Information Systems{" "}
                   </strong>{" "}
-                  - Sabaragamuwa University of Sri lanka (2016-2023)
+                  - Sabaragamuwa University of Sri lanka
                 </li>
                 <li>
                   Relevant Coursework: Data Structures, Web Development, Cloud
@@ -81,7 +82,7 @@ export const About = () => {
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h4 className="font-semibold">
-                    Associate Software Engineer at Koombiyo IT (2020 - Present)
+                    Associate Software Engineer at Koombiyo IT (2024 - Present)
                   </h4>
                   <p>
                     Developed and maintained full-stack web applications,
