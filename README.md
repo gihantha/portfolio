@@ -51,10 +51,10 @@ Follow these steps to set up the project locally:
 ### General
 
 **Login Page:**
-![Loading](/home/kaveen/Pictures/Screenshots/Loading.png)
+![Loading](./public/Images/Loading.png)
 
 **Full Page:**
-![Single Page Web App](/home/kaveen/Pictures/Screenshots/FullPage.png)
+![Single Page Web App](./public/Images/FullPagepng)
 
 ## License
 
