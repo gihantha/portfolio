@@ -166,8 +166,9 @@ img.fade-in {
 
 .carousel-item {
   flex: 0 0 100%;
-  min-width: 100%; /* 🔥 THIS FIXES 100% ZOOM */
-  scroll-snap-align: start;
+  max-width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
 
   /* Prevent flex math bugs */
   box-sizing: border-box;
