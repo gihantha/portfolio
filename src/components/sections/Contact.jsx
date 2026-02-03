@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -89,6 +91,65 @@ export const Contact = () => {
               Send Message
             </button>
           </form>
+          <div className="h-px bg-white/10 my-6" />
+
+          <div className="mt-8 text-center text-gray-400 space-y-2">
+            <p className="text-sm">Or reach me directly</p>
+
+            <p>
+              📞{" "}
+              <a
+                href="tel:+94719223365"
+                className="text-blue-400 hover:text-blue-300 transition"
+              >
+                +94 719 223 365
+              </a>{" "}
+              <span className="text-gray-500">(WhatsApp)</span>
+            </p>
+
+            <p>
+              💬{" "}
+              <a
+                href="https://wa.me/94719223365"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition"
+              >
+                Chat on WhatsApp
+              </a>
+            </p>
+            <p>
+              📧{" "}
+              <a
+                href="mailto:gihantha01@gmail.com"
+                className="text-blue-400 hover:text-blue-300 transition"
+              >
+                gihantha01@gmail.com
+              </a>
+            </p>
+          </div>
+
+          <div className="flex justify-center gap-6 mt-4 text-2xl">
+            <a
+              href="https://github.com/gihantha"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="text-gray-400 hover:text-white transition"
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/kavien/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-gray-400 hover:text-blue-400 transition"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </div>
         </div>
       </RevealOnScroll>
     </section>

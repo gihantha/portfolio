@@ -48,3 +48,43 @@ html, body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Add these styles */
+.project-image {
+  transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.02);
+}
+
+.mockup-browser {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(59, 7, 100, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mockup-browser-header {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Add these styles for project cards */
+.project-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+}
+
+.project-card-shadow:hover {
+  box-shadow: 0 8px 30px -2px rgba(59, 130, 246, 0.2);
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
