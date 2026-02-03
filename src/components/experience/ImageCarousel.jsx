@@ -1,44 +1,98 @@
-import { useState } from "react";
+// components/experience/ImageCarousel.jsx
+import { useState, useEffect, useRef } from "react";
 
 export const ImageCarousel = ({ images }) => {
+  const [loadedImages, setLoadedImages] = useState([]);
+  
+  // Preload images
+  useEffect(() => {
+    const preloadPromises = images.map((img) => {
+      return new Promise((resolve) => {
+        const image = new Image();
+        image.src = img.src;
+        image.onload = () => resolve(img.src);
+        image.onerror = () => resolve(null);
+      });
+    });
+
+    Promise.all(preloadPromises).then((loaded) => {
+      setLoadedImages(loaded.filter(Boolean));
+    });
+  }, [images]);
+
   return (
     <div className="relative">
       <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4">
-        {images.map((img) => (
-          <CarouselItem key={img.src} img={img} />
+        {images.map((img, index) => (
+          <SimpleCarouselItem key={index} img={img} />
         ))}
       </div>
     </div>
   );
 };
 
-const CarouselItem = ({ img }) => {
-  const [loaded, setLoaded] = useState(false);
+const SimpleCarouselItem = ({ img }) => {
+  const [status, setStatus] = useState('loading');
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const image = imgRef.current;
+    if (!image) return;
+
+    const updateStatus = () => {
+      if (image.complete) {
+        setStatus('loaded');
+      } else {
+        setStatus('error');
+      }
+    };
+
+    image.addEventListener('load', () => setStatus('loaded'));
+    image.addEventListener('error', () => setStatus('error'));
+    
+    // Check initial state
+    updateStatus();
+
+    return () => {
+      image.removeEventListener('load', () => setStatus('loaded'));
+      image.removeEventListener('error', () => setStatus('error'));
+    };
+  }, []);
+
+  console.log(`Image ${img.src}: ${status}`); // Debug log
 
   return (
     <div className="min-w-[85%] md:min-w-[70%] snap-center">
-      <div className="h-56 md:h-72 rounded-xl overflow-hidden border border-white/10 relative bg-black/20 flex items-center justify-center">
-        {!loaded && (
+      <div className="h-56 md:h-72 rounded-xl overflow-hidden border-2 border-blue-500 relative bg-gradient-to-br from-purple-900/20 to-cyan-900/20">
+        
+        {status === 'loading' && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-8 h-8 border-4 border-white/20 border-t-cyan-400 rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-white/30 border-t-blue-500 rounded-full animate-spin" />
+          </div>
+        )}
+
+        {status === 'error' && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-red-900/20">
+            <div className="text-3xl mb-2">⚠️</div>
+            <p className="text-sm text-center">Failed to load image</p>
+            <p className="text-xs text-gray-500 mt-2 truncate max-w-full">{img.src}</p>
           </div>
         )}
 
         <img
+          ref={imgRef}
           src={img.src}
-          alt={img.alt}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-          onLoad={() => setLoaded(true)}
-          onError={() => setLoaded(true)}
-          loading="lazy"
-          decoding="async"
+          alt={img.alt || "Carousel image"}
+          className={`w-full h-full object-cover ${
+            status === 'loaded' ? 'opacity-100' : 'opacity-0'
+          } transition-opacity duration-300`}
+          crossOrigin="anonymous"
+          style={{ display: status === 'loaded' ? 'block' : 'none' }}
         />
       </div>
-
+      
       {img.caption && (
-        <p className="text-sm text-gray-400 mt-2">{img.caption}</p>
+        <p className="text-sm text-gray-400 mt-2 text-center">{img.caption}</p>
       )}
     </div>
   );
