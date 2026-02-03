@@ -19,7 +19,6 @@ const invManageInventory = '/portfolio/Images/projects/inventory-system/inv-mana
 export const Experience = () => {
   return (
     <section id="experience" className="py-20">
-      <RevealOnScroll>
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-10 text-center bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
             Professional Experience
@@ -217,7 +216,6 @@ export const Experience = () => {
             </div>
           </div>
         </div>
-      </RevealOnScroll>
     </section>
   );
 };
