@@ -1,9 +1,8 @@
 // components/experience/ImageCarousel.jsx
 import { useState, useEffect, useRef } from "react";
+import ImageErrorBoundary from "../ImageErrorBoundary";
 
 export const ImageCarousel = ({ images }) => {
-  const [loadedImages, setLoadedImages] = useState([]);
-  
   // Preload images
   useEffect(() => {
     const preloadPromises = images.map((img) => {
@@ -15,16 +14,16 @@ export const ImageCarousel = ({ images }) => {
       });
     });
 
-    Promise.all(preloadPromises).then((loaded) => {
-      setLoadedImages(loaded.filter(Boolean));
-    });
+    Promise.all(preloadPromises);
   }, [images]);
 
   return (
     <div className="relative">
       <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4">
         {images.map((img, index) => (
-          <SimpleCarouselItem key={index} img={img} />
+          <ImageErrorBoundary key={index}>
+            <SimpleCarouselItem img={img} />
+          </ImageErrorBoundary>
         ))}
       </div>
     </div>
