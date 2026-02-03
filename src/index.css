@@ -1,20 +1,31 @@
 @import "tailwindcss";
 @tailwind utilities;
 
-html, body {
+/* ===============================
+   Base styles
+================================ */
+
+html,
+body {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk" , sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   background: #0a0a0a;
   color: #f3f4f6;
+  width: 100%;
+  overflow-x: clip; /* SAFE for carousels */
 }
 
-@layer utilities {
+/* ===============================
+   Tailwind utility extensions
+================================ */
 
+@layer utilities {
   @keyframes blink {
-    0%, 100%{
+    0%,
+    100% {
       opacity: 1;
-    } 
+    }
     50% {
       opacity: 0;
     }
@@ -24,11 +35,10 @@ html, body {
     animation: blink 0.8s step-end infinite;
   }
 
-
   @keyframes loading {
-    0%{
+    0% {
       transform: translateX(-100%);
-    } 
+    }
     100% {
       transform: translateX(250%);
     }
@@ -39,10 +49,15 @@ html, body {
   }
 }
 
+/* ===============================
+   Reveal on scroll
+================================ */
+
 .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -50,7 +65,23 @@ html, body {
   transform: translateY(0);
 }
 
-/* Add these styles */
+/* ===============================
+   Scrollbar hiding (safe)
+================================ */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===============================
+   Project / card styles
+================================ */
+
 .project-image {
   transition: transform 0.3s ease;
 }
@@ -59,8 +90,25 @@ html, body {
   transform: scale(1.02);
 }
 
+.project-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card-shadow:hover {
+  box-shadow: 0 8px 30px -2px rgba(59, 130, 246, 0.2);
+}
+
+/* ===============================
+   Mockup browser UI
+================================ */
+
 .mockup-browser {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(59, 7, 100, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.1) 0%,
+    rgba(59, 7, 100, 0.1) 100%
+  );
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -74,41 +122,17 @@ html, body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Add these styles for project cards */
-.project-card-shadow {
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+/* ===============================
+   Images (SAFE)
+================================ */
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-.project-card-shadow:hover {
-  box-shadow: 0 8px 30px -2px rgba(59, 130, 246, 0.2);
-}
-
-/* Smooth transitions */
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Add to index.css */
-
-/* Ensure images display properly */
-
-/* Fix for image container */
-.image-container {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Ensure smooth image transitions */
+/* Optional fade-in helper */
 img.fade-in {
   animation: fadeIn 0.5s ease-in;
 }
@@ -122,27 +146,62 @@ img.fade-in {
   }
 }
 
-/* Force hardware acceleration for smooth animations */
-.reveal, .carousel-item, img {
-  transform: translateZ(0);
+/* ===============================
+   CAROUSEL (FIXED + RESPONSIVE)
+================================ */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  scroll-snap-align: center;
+  transform: none; /* IMPORTANT: no GPU layout bugs */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Laptop zoom (80%) fix */
+@media (max-width: 1024px) {
+  .carousel-item {
+    flex: 0 0 90%;
+  }
+}
+
+/* Mobile fix */
+@media (max-width: 640px) {
+  .carousel-item {
+    flex: 0 0 100%;
+  }
+}
+
+/* ===============================
+   Hardware acceleration (SAFE)
+================================ */
+
+/* Only for non-layout elements */
+.reveal {
   backface-visibility: hidden;
-  perspective: 1000;
 }
 
-/* Add this to force image display */
-img {
-  display: block !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
+/* ===============================
+   Debug helpers (optional)
+================================ */
 
-/* Debug border for images */
 .debug-img {
   border: 2px solid red;
   background: linear-gradient(45deg, #f0f, #0ff) !important;
-}
-
-/* Ensure image containers have proper dimensions */
-.h-56, .md\:h-72 {
-  min-height: 14rem !important;
 }

@@ -1,1 +1,0 @@
-this is my portfolio web, i here the issue is ,sometimes the images are loading successfully , but sometimes it didnt loading at alll, fix it 
