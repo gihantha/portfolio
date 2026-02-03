@@ -145,52 +145,56 @@ img.fade-in {
     opacity: 1;
   }
 }
-
 /* ===============================
-   CAROUSEL (FIXED + RESPONSIVE)
+   CAROUSEL — 100% ZOOM FIXED
 ================================ */
 
 .carousel {
   position: relative;
   width: 100%;
   display: flex;
-  gap: 1rem;
   overflow-x: auto;
   overflow-y: hidden;
+
+  /* IMPORTANT */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+
+  /* Fix 100% zoom clipping */
+  padding-inline: 1px;
 }
 
 .carousel-item {
   flex: 0 0 100%;
-  max-width: 100%;
-  scroll-snap-align: center;
-  transform: none; /* IMPORTANT: no GPU layout bugs */
+  min-width: 100%; /* 🔥 THIS FIXES 100% ZOOM */
+  scroll-snap-align: start;
+
+  /* Prevent flex math bugs */
+  box-sizing: border-box;
+
+  /* NO transforms here */
+  transform: none;
+}
+
+/* spacing WITHOUT flex gap (gap causes width bugs) */
+.carousel-item:not(:last-child) {
+  margin-right: 1rem;
 }
 
 .carousel-item img {
   width: 100%;
   height: auto;
+  display: block;
   object-fit: cover;
 }
 
-/* Laptop zoom (80%) fix */
-@media (max-width: 1024px) {
-  .carousel-item {
-    flex: 0 0 90%;
+/* Laptop specific safeguard */
+@media (min-width: 1024px) {
+  .carousel {
+    overflow-x: scroll; /* force real scrolling */
   }
 }
 
-/* Mobile fix */
-@media (max-width: 640px) {
-  .carousel-item {
-    flex: 0 0 100%;
-  }
-}
-
-/* ===============================
-   Hardware acceleration (SAFE)
-================================ */
 
 /* Only for non-layout elements */
 .reveal {
