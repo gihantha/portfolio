@@ -1,25 +1,20 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { ImageCarousel } from "../experience/ImageCarousel";
 
-// Admin Chat
-import adminDashboard from "../../assets/projects/admin-chat/dashboard.png";
-import adminPanel from "../../assets/projects/admin-chat/admin-panel.png";
+// Remove direct imports
 
-// Shopify
-import shopifyDashboard from "../../assets/projects/shopify-app/shopify-app-dashboard.png";
-import shopifyShipping from "../../assets/projects/shopify-app/shopify-app-shipping.png";
-import shopifyTimeline from "../../assets/projects/shopify-app/shopify-app-timeline.png";
-
-// WordPress
-import wpDashboard from "../../assets/projects/wordpress-plugin/plugin-dashboard.png";
-import wpPickup from "../../assets/projects/wordpress-plugin/plugin-request-pickup.png";
-import wpTracking from "../../assets/projects/wordpress-plugin/plugin-tracking-order.png";
-
-// Inventory System
-import invDashboard from "../../assets/projects/inventory-system/inv-dashboard.png";
-import invVendor from "../../assets/projects/inventory-system/inv-vendor.png";
-import invOrders from "../../assets/projects/inventory-system/inv-orders.png";
-import invManageInventory from "../../assets/projects/inventory-system/inv-manage-inventory.png";
+const adminDashboard = '/portfolio/Images/projects/admin-chat/dashboard.png';
+const adminPanel = '/portfolio/Images/projects/admin-chat/admin-panel.png';
+const shopifyDashboard = '/portfolio/Images/projects/shopify-app/shopify-app-dashboard.png';
+const shopifyShipping = '/portfolio/Images/projects/shopify-app/shopify-app-shipping.png';
+const shopifyTimeline = '/portfolio/Images/projects/shopify-app/shopify-app-timeline.png';
+const wpDashboard = '/portfolio/Images/projects/wordpress-plugin/plugin-dashboard.png';
+const wpPickup = '/portfolio/Images/projects/wordpress-plugin/plugin-request-pickup.png';
+const wpTracking = '/portfolio/Images/projects/wordpress-plugin/plugin-tracking-order.png';
+const invDashboard = '/portfolio/Images/projects/inventory-system/inv-dashboard.png';
+const invVendor = '/portfolio/Images/projects/inventory-system/inv-vendor.png';
+const invOrders = '/portfolio/Images/projects/inventory-system/inv-orders.png';
+const invManageInventory = '/portfolio/Images/projects/inventory-system/inv-manage-inventory.png';
 
 export const Experience = () => {
   return (
