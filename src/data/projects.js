@@ -41,7 +41,21 @@ export const projects = [
       "Express",
       "Axios",
     ],
-    github: "https://github.com/gihantha/mern-chat-app",
+    github: "https://github.com/gihantha/healthcare-backend",
+  },
+  {
+    title: "Healthcare Frontend for Goverment Hospitals",
+    description:
+      "React + TypeScript frontend for the QR-based government hospital management system, backed by the provided swagger.json API.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Axios",
+      "Tailwind CSS",
+      "React Query",
+      "React Hook Form",
+    ],
+    github: "https://github.com/gihantha/healthcare-frontend",
   },
   {
     title: "Lullabyye E-Commerce",

@@ -150,6 +150,20 @@ export const Contact = () => {
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
           </div>
+          <div className="mt-8 text-center">
+            <h3 className="text-lg font-semibold text-white mb-4">
+              Download My CV
+            </h3>
+
+            <a
+              href="/portfolio/Kaveen_Gihantha_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-3 rounded-lg font-medium transition hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+            >
+              📄 View / Download CV
+            </a>
+          </div>
         </div>
       </RevealOnScroll>
     </section>
